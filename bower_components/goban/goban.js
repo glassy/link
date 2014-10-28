@@ -30,7 +30,7 @@
       goban.sectionTitle = allTextLines[1].split(',')[1];
       bodyLines = allTextLines.slice(2);
       goodList = bodyLines.map(function(text){
-        text = text.replace(/"(\s?http)(.*)"/g, '$1' + RegExp.$2.replace(/,/g, 'COMMA'));
+        text = text.replace(/(html|css|js|output),/g, '$1COMMA');
         return text.split(',').map(function(str){
           return str.replace(/COMMA/g, ',');
         });
@@ -44,19 +44,31 @@
         }
       };
       bestList = goodList.map(function(list, index){
-        var isClosed, obj;
+        var isClosed, isBlank, isIsolate, obj;
         isClosed = false;
         if (!list[0]) {
           lastFolder.set(index);
           if (list[2] && list[2].search(/expand(.+)true/ > -1)) {
+            isClosed = false;
+          }
+          if (list[2] && list[2].search(/expand(.+)false/ > -1)) {
             isClosed = true;
+          }
+        } else {
+          if (list[2] && list[2].search(/target(.+)_blank/ > -1)) {
+            isBlank = true;
+          }
+          if (list[2] && list[2].search(/isolate(.+)true/ > -1)) {
+            isIsolate = true;
           }
         }
         obj = (list[0] && {
           url: list[0].replace(/["\s]/g, ''),
           name: list[1].replace(/["\s]/g, ''),
           isFolder: false,
-          pIndex: lastFolder.id
+          pIndex: lastFolder.id,
+          isBlank: isBlank,
+          isIsolate: isIsolate
         }) || {
           name: list[1],
           isFolder: true,
@@ -189,6 +201,9 @@
       return $sce.trustAsResourceUrl(url);
     };
     goban.getCurrentURL = function(){
+      if (goban.data[goban.myJ] && goban.data[goban.myJ].isBlank) {
+        return;
+      }
       return goban.trust((goban.data[goban.myJ] && goban.data[goban.myJ].url) || (goban.data[goban.myJ + 1] && goban.data[goban.myJ + 1].url));
     };
     goban.backupAll = function(){
