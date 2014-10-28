@@ -11,9 +11,7 @@
     };
     $scope.countWidth = function(){
       $window.innerWidth - 220;
-      return $scope.myOpts = ['gl_book', 'gl_demo', 'gl_history', 'gl_intro', 'gl_join',
-                             'gl_issue', 'gl_link', 'gl_news', 'gl_movement',
-                             'gl_print', 'gl_tool'];
+      return $scope.myOpts = ['gl_about','gl_dialogue','gl_news','gl_print','gl_seminar'];
     };
   };
   myDummy = {
