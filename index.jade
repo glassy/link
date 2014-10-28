@@ -56,7 +56,7 @@ body(ng-keydown="goban.keyDown($event)",
 		ng-style = "{height: countHeight() - navHeight + 'px', width : (hideSideBar && '0%') || '200px'}")
 		a(ng-href = "{{goban.path}}{{goban.title}}{{goban.myI}}",
 					target = "_blank")
-					span(id = "goban-sectionTitle") {{goban.sectionTitle}}
+					span(id = "goban-sectionTitle") {{goban.sectionTitle || '創建'}}
 		ul 
 			li(ng-repeat="j in goban.data | toIndex",
 				ng-click = "goban.setJ(j)")
