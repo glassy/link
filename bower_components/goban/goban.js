@@ -88,7 +88,7 @@
         });
       },
       redirect: function(url){
-        if (url.indexOf(".csv") === -1) {
+        if (url.indexOf("csv") === -1) {
           url += '.csv';
         }
         $http({
@@ -96,6 +96,7 @@
           url: url,
           dataType: "text"
         }).success(function(data){
+          console.log(data);
           goban.data = goban.parseFromCSV(data);
         }).error(function(){
           goban.sectionTitle = null;
