@@ -2,7 +2,7 @@
   "name": "goban",
   "main": "goban.js",
   "license": "CC0",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "authors": [
     "Bestian Tang <besitan@gmail.com>"
   ],
@@ -33,13 +33,14 @@
     "*.ls",
     "*.scss"
   ],
-  "_release": "0.1.3",
+  "_release": "0.2.0",
   "_resolution": {
     "type": "version",
-    "tag": "v0.1.3",
-    "commit": "ffb5d0c7e7f5be653a781cacd7790c85a40f7bf9"
+    "tag": "v0.2.0",
+    "commit": "c50a9da3b50545b0c79ccb1c6533c0f86178e13a"
   },
   "_source": "git://github.com/bestian/goban.git",
-  "_target": "~0.1.2",
-  "_originalSource": "goban"
+  "_target": "~0.2.0",
+  "_originalSource": "goban",
+  "_direct": true
 }

@@ -5,11 +5,11 @@ head
 	title(ng-bind-template = "{{goban.title}}@透明連線")
 	meta(charset='utf-8')
 
-	meta(property="og:title" content="公益好康藝文活動")
+	meta(property="og:title" content="公義有趣聯播網")
 	meta(property="og:type" content="website")
 	meta(property="og:url" content="https://glassy.github.io/link/")
 	meta(property="og:images" content="https://glassy.github.io/link/images/og-image.png")
-	meta(property="og:description" content="公益好康的藝文活動，就在透明連線^_^")
+	meta(property="og:description" content="公義有趣聯播網，就在透明連線^_^")
 
 	link(rel="shortcut icon",href="favicon.ico", type="image/x-icon")
 	link(href="stylesheets/screen.css", media="screen, projection", rel="stylesheet", type="text/css" )
@@ -53,7 +53,7 @@ body(ng-keydown="goban.keyDown($event)",
 
 
 	div(id = "goban-side", ng-cloak,
-		ng-style = "{height: countHeight() - navHeight + 'px', width : (hideSideBar && '0%') || '200px'}")
+		ng-style = "{height: countHeight() - navHeight + 'px'")
 		a(ng-href = "{{goban.path}}{{goban.title}}{{goban.myI}}",
 					target = "_blank")
 					span(id = "goban-sectionTitle") {{goban.sectionTitle || '創建'}}
@@ -78,13 +78,14 @@ body(ng-keydown="goban.keyDown($event)",
 
 
 	div(id = "goban-main",
-		ng-style = "{height: countHeight() - navHeight + 'px', width : (hideSideBar && '100%') || countWidth() + 'px'}")
+		ng-class = "{full: hideSideBar}",
+		ng-style = "{height: countHeight() - navHeight + 'px'}")
 		div(id = "myBlank", ng-cloak,
 			class = "goban-blank")
 			a(ng-href = "{{goban.data[goban.myJ].url}}",
 				target = "_blank") 按此可開啟新頁籤
 		iframe(id = "myFrame", ng-cloak,
-				ng-class = "{loading: goban.pageLoading}"
+				ng-class = "{loading: goban.pageLoading}",
 				ng-src = "{{goban.getCurrentURL()}}")
 	div(id = "goban-keyBordCtrl")
 		div(id = "up",ng-class = "{available: false}",

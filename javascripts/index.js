@@ -10,26 +10,21 @@ ga('send', 'pageview');
 
 (function(){
   var chainCtrl, myDummy;
-  chainCtrl = function($window, $scope, $dummy, $goban){
-    $scope.goban = $goban;
-    $scope.goban.data = $dummy;
-    $scope.goban.load($goban.myI);
+  chainCtrl = function($window, $scope, $goban){
+    $scope.goban = $goban.$default({
+      path : 'https://ethercalc.org/',
+      title : 'gl_news',
+      colMax : 3
+    });
+    $scope.goban.init();
+
     $scope.navHeight = 50;
     $scope.countHeight = function(){
       return $window.innerHeight - 40;
     };
-    $scope.countWidth = function(){
-      $window.innerWidth - 220;
-      return $scope.myOpts = ['gl_about','gl_dialogue','gl_history','gl_herstory','gl_market','gl_news','gl_print','gl_seminar'];
-    };
+
+    $scope.myOpts = ['gl_about','gl_dialogue','gl_history','gl_herstory','gl_market','gl_news','gl_print','gl_seminar'];
   };
-  myDummy = {
-    name: 'know',
-    isFolder: false,
-    url: 'https://glassy.hackpad.com'
-  };
-  angular.module('chainApp', ['goban']).constant('$gobanPath', 'https://ethercalc.org/')
-  .value('$gobanTitle', 'gl_news').constant('$gobanMax', 3)
-  .constant('$dummy', myDummy)
+  angular.module('chainApp', ['goban'])
   .controller('chainCtrl', chainCtrl);
 }).call(this);
