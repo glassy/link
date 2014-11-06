@@ -23,7 +23,16 @@ ga('send', 'pageview');
       return $window.innerHeight - 40;
     };
 
-    $scope.myOpts = ['gl_about','gl_dialogue','gl_history','gl_herstory','gl_market','gl_news','gl_print','gl_seminar'];
+    $scope.myOpts = 
+    ['gl_about',
+    'gl_dialogue',
+    'gl_history',
+    'gl_herstory',
+    'gl_market',
+    'gl_news',
+    'gl_parties',
+    'gl_print',
+    'gl_seminar'];
   };
   angular.module('chainApp', ['goban'])
   .controller('chainCtrl', chainCtrl);
