@@ -20,7 +20,7 @@ ga('send', 'pageview');
     };
     $scope.countWidth = function(){
       $window.innerWidth - 220;
-      return $scope.myOpts = ['gl_about','gl_dialogue','gl_herstory','gl_market','gl_news','gl_print','gl_seminar'];
+      return $scope.myOpts = ['gl_about','gl_dialogue','gl_history','gl_herstory','gl_market','gl_news','gl_print','gl_seminar'];
     };
   };
   myDummy = {
