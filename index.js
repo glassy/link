@@ -37,17 +37,16 @@ ga('send', 'pageview');
     'gl_print',
     'gl_seminar'];
 
-    $scope.myOptsNew = ,
-     [{h:'gl_news', n:'透明新聞'},
+    $scope.myOptsNew = [{h:'gl_news', n:'透明新聞'},
       {h:'gl_about', n:'透明簡介'},
       {h:'gl_dialogue', n:'透明會晤'},
       {h:'gl_seminar', n:'透明講座'},
       {h:'gl_market', n:'透明市集'},
       {h:'gl_parties', n:'小黨聯播'},
       {h:'gl_print', n:'即印工具'}
-    }],
+    ];
+}
 
-  };
   angular.module('chainApp', ['goban'])
   .controller('chainCtrl', chainCtrl);
 }).call(this);
