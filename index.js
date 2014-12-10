@@ -31,6 +31,7 @@ ga('send', 'pageview');
   //  'gl_herstory',
   //  'gl_hongkong',
     'gl_market',
+    'gl_mobile',
     'gl_news',
     'gl_parties',
     'gl_print',
