@@ -35,7 +35,7 @@ body(ng-keydown="goban.keyDown($event)",
 
 			span(ng-cloak)
 				select(ng-model = "goban.title",
-						ng-options = "o for o in myOpts",
+						ng-options = "o.h as o.n for o in myOptsNew",
 						ng-init = "goban.title = goban.title",
 						ng-change = "goban.load(goban.myI)")
 				span(class = "number") {{goban.myI}}
