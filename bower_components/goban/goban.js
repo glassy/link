@@ -87,33 +87,12 @@
           goban.data = [];
         });
       },
-      redirect: function(url){
-        if (url.indexOf("csv") === -1) {
-          url += '.csv';
-        }
-        $http({
-          method: "GET",
-          url: url,
-          dataType: "text"
-        }).success(function(data){
-          console.log(data);
-          goban.data = goban.parseFromCSV(data);
-        }).error(function(){
-          goban.sectionTitle = null;
-          goban.data = [];
-        });
-      },
       init: function(){
         this.load(this.myI);
       },
       parseFromCSV: function(csv){
-        var allTextLines, maybeRedirect, bodyLines, goodList, lastFolder, bestList;
+        var allTextLines, bodyLines, goodList, lastFolder, bestList;
         allTextLines = csv.split(/\r\n|\n/);
-        maybeRedirect = allTextLines[0].split(',')[0];
-        if (maybeRedirect && maybeRedirect.substr(0, 1) !== '#') {
-          goban.redirect(maybeRedirect);
-          return;
-        }
         this.sectionTitle = allTextLines[1].split(',')[1];
         bodyLines = allTextLines.slice(2);
         goodList = bodyLines.map(function(text){
@@ -277,7 +256,6 @@
         }
       },
       $default: function(obj){
-        console.log(location.hash.split('&')[0].replace('#', ''));
         angular.extend(this, obj);
         angular.extend(this, {
           myColumnIndex: (function(){
@@ -288,10 +266,6 @@
             return results$;
           }())
         });
-        if (location.hash.split('&')[0].replace('#', '')) {
-          console.log(location.hash.split('&')[0].replace('#', ''));
-          goban.title = location.hash.split('&')[0].replace('#', '');
-        }
         return this;
       }
     });

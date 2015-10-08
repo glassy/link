@@ -9,7 +9,7 @@ ga('send', 'pageview');
 
 
 (function(){
-  var chainCtrl, myDummy;
+  var chainCtrl;
   chainCtrl = function($window, $scope, $goban){
     $scope.goban = $goban.$default({
       path : 'https://ethercalc.org/',
